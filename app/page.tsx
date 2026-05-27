@@ -1,106 +1,184 @@
+"use client";
+import { motion } from "motion/react";
 import { categories } from "@/lib/data";
-import CategorySection from "@/components/CategorySection";
-import NsfwSection from "@/components/NsfwSection";
+import FilterableContent from "@/components/FilterableContent";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const BADGES = [
-  { type: "TOP",  label: "TOP",  style: "bg-pink-500/15 text-pink-400 border border-pink-500/30" },
-  { type: "FREE", label: "FREE", style: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30" },
-  { type: "PAID", label: "PAID", style: "bg-amber-500/12 text-amber-400 border border-amber-500/25" },
-  { type: "API",  label: "API",  style: "bg-cyan-500/12 text-cyan-400 border border-cyan-500/25" },
-  { type: "OS",   label: "OS",   style: "bg-violet-500/15 text-violet-400 border border-violet-500/30" },
+  { type: "TOP",  label: "TOP",  desc: "redakčný výber / lídra trhu", color: "#f472b6", style: "bg-pink-500/15 text-pink-400 border border-pink-500/25" },
+  { type: "FREE", label: "FREE", desc: "bezplatný tier",               color: "#34d399", style: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25" },
+  { type: "PAID", label: "PAID", desc: "len platená verzia",           color: "#fbbf24", style: "bg-amber-500/10 text-amber-400 border border-amber-500/20" },
+  { type: "API",  label: "API",  desc: "dostupné API",                 color: "#22d3ee", style: "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20" },
+  { type: "OS",   label: "OS",   desc: "open-source",                  color: "#a78bfa", style: "bg-violet-500/15 text-violet-400 border border-violet-500/25" },
 ];
+
+const WHATS_NEW = [
+  { date: "máj 2026", text: "Meta vydal Llama 4 Spark — nový frontier open-source model" },
+  { date: "máj 2026", text: "Google Veo 3.1 s natívnym audiom a SynthID vodoznakmi" },
+  { date: "máj 2026", text: "DeepSeek V4 šokuje výkonom v kóde a matematike zadarmo" },
+  { date: "apr 2026", text: "HappyHorse-1.0 (Alibaba) — #2 na Artificial Analysis rebríčku" },
+  { date: "apr 2026", text: "Suno v5.5 spúšťa Voices — klonovanie vlastného hlasu" },
+];
+
+const allNavItems = [
+  ...categories,
+  { id: "nsfw", icon: "🔞", title: "NSFW & Erotický Obsah", color: "#ff6c6c" },
+];
+
+const totalTools = categories.reduce(
+  (acc, cat) => acc + cat.subsections.reduce((a, s) => a + s.tools.length, 0),
+  0
+);
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
 
-      <main className="px-4 py-12 font-['var(--font-dm-mono)']">
-        {/* Page Header */}
-        <div className="max-w-5xl mx-auto mb-12 border-b border-[#2a2a40] pb-10">
-          <div className="flex items-start gap-4 mb-5">
-            <div>
-              <h1 className="font-['var(--font-syne)'] text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
-                Prehľad AI Nástrojov
-                <span className="text-violet-400"> 2026</span>
-              </h1>
+      <main className="px-4 pb-16 font-['Inter']">
+
+        {/* ── Hero ── */}
+        <div className="max-w-6xl mx-auto pt-10 pb-14">
+
+          {/* Badge + Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+            className="mb-8"
+          >
+            <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full text-[11px] font-['Space_Grotesk'] font-semibold tracking-wide"
+              style={{ background: "rgba(124,58,237,0.12)", border: "1px solid rgba(124,58,237,0.3)", color: "#a78bfa" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              Aktuálne — Q2 / Máj 2026
             </div>
-            <span className="mt-2 shrink-0 bg-violet-500 text-white text-[10px] font-['var(--font-syne)'] font-bold tracking-widest uppercase px-2.5 py-1 rounded">
-              Máj 2026
+
+            <h1 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-4">
+              <span className="text-white">Prehľad AI </span>
+              <span className="gradient-text">Nástrojov 2026</span>
+            </h1>
+            <p className="text-[15px] text-[#6b6890] max-w-2xl leading-relaxed font-['Inter']">
+              Kompletný praktický výber — video, avatary, obrázky, hlas, hudba, LLM a kódovanie.
+              Filtrovanie, vyhľadávanie, aktualizované pre Q2&nbsp;2026.
+            </p>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
+            className="flex flex-wrap gap-4 mb-8"
+          >
+            {[
+              { value: totalTools.toString(), label: "nástrojov" },
+              { value: (categories.length + 1).toString(), label: "kategórií" },
+              { value: "Q2", label: "2026" },
+            ].map(({ value, label }) => (
+              <div
+                key={label}
+                className="flex items-baseline gap-1.5 px-4 py-2 rounded-xl"
+                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                <span className="font-['Space_Grotesk'] text-xl font-bold text-white">{value}</span>
+                <span className="text-[11px] text-[#6b6890]">{label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Legend */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex flex-wrap items-center gap-2.5 text-[11px] text-[#6b6890]"
+          >
+            <span className="text-[10px] tracking-[0.12em] uppercase text-[#4a4868] font-['Space_Grotesk'] mr-1">Legenda</span>
+            {BADGES.map((b) => (
+              <span key={b.type} className="flex items-center gap-1.5">
+                <span className={`text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded-md font-['Space_Grotesk'] ${b.style}`}>
+                  {b.label}
+                </span>
+                <span className="text-[#4a4868]">—</span>
+                <span>{b.desc}</span>
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* ── What's new ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
+          className="max-w-6xl mx-auto mb-10 rounded-2xl overflow-hidden"
+          style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.18)" }}
+        >
+          <div className="flex items-center gap-3 px-5 py-3 border-b"
+            style={{ borderColor: "rgba(124,58,237,0.15)" }}>
+            <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+            <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-violet-400 font-['Space_Grotesk']">
+              Čo je nové — Máj 2026
             </span>
           </div>
-
-          {/* Meta row */}
-          <div className="flex flex-wrap gap-6 mb-6">
-            {[
-              ["Účel", "Príručka / Manuál"],
-              ["Kategórie", "8 oblastí"],
-              ["Pokrytie", "Kompletný trh"],
-              ["Stav", "Aktuálne — Q2/2026"],
-            ].map(([label, value]) => (
-              <div key={label} className="flex flex-col">
-                <span className="text-[10px] tracking-widest text-[#7a7898] uppercase mb-0.5">{label}</span>
-                <span className="text-[13px] text-[#e8e6ff]">{value}</span>
+          <div className="px-5 py-3 flex flex-col sm:flex-row sm:flex-wrap gap-y-2 gap-x-8">
+            {WHATS_NEW.map((item, i) => (
+              <div key={i} className="flex items-start gap-3 text-[12px] sm:w-[calc(50%-2rem)]">
+                <span className="text-[10px] text-[#6b6890] shrink-0 mt-0.5 w-16 font-['Space_Grotesk']">{item.date}</span>
+                <span className="text-[#c8c6e8] leading-snug">{item.text}</span>
               </div>
             ))}
           </div>
+        </motion.div>
 
-          {/* Legend */}
-          <div className="flex flex-wrap items-center gap-3 text-[11px] text-[#7a7898]">
-            <span className="text-[10px] tracking-widest uppercase mr-1">Legenda:</span>
-            {BADGES.map((b) => (
-              <span key={b.type} className="flex items-center gap-1.5">
-                <span className={`text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded ${b.style}`}>
-                  {b.label}
+        {/* ── TOC ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="max-w-6xl mx-auto mb-12 rounded-2xl overflow-hidden"
+          style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)" }}
+        >
+          <div className="px-6 py-3 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+            <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#4a4868] font-['Space_Grotesk']">
+              Obsah
+            </span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px p-1">
+            {allNavItems.map((cat, i) => (
+              <a
+                key={cat.id}
+                href={`#${cat.id}`}
+                className="flex items-center gap-2.5 text-[12px] text-[#8885a8] hover:text-white transition-colors duration-150 px-4 py-3 rounded-xl hover:bg-white/5 cursor-pointer"
+              >
+                <span
+                  className="w-5 h-5 rounded-lg flex items-center justify-center text-[11px] shrink-0"
+                  style={{ background: `${cat.color}18`, border: `1px solid ${cat.color}30` }}
+                >
+                  {cat.icon}
                 </span>
-                <span>—</span>
-                <span>
-                  {b.type === "TOP" && "najlepší v kategórii"}
-                  {b.type === "FREE" && "bezplatný tier"}
-                  {b.type === "PAID" && "len platená verzia"}
-                  {b.type === "API" && "dostupné API"}
-                  {b.type === "OS" && "open-source"}
+                <span className="font-['Space_Grotesk'] font-medium">
+                  <span className="text-[#4a4868] mr-1">{i + 1}.</span>
+                  {cat.title}
                 </span>
-              </span>
+              </a>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* TOC */}
-        <div className="max-w-5xl mx-auto mb-12 bg-[#13131c] border border-[#2a2a40] rounded-lg p-6">
-          <div className="text-[11px] font-bold tracking-widest uppercase text-[#7a7898] mb-4">
-            Obsah
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[...categories, { id: "nsfw", icon: "🔞", title: "NSFW & Erotický Obsah", color: "#ff6c6c" }].map(
-              (cat, i) => (
-                <a
-                  key={cat.id}
-                  href={`#${cat.id}`}
-                  className="flex items-center gap-2 text-[12px] text-[#e8e6ff] hover:text-violet-400 transition-colors py-1.5"
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full shrink-0"
-                    style={{ background: cat.color }}
-                  />
-                  <span>{i + 1}. {cat.title}</span>
-                </a>
-              )
-            )}
-          </div>
-        </div>
+        {/* ── Divider ── */}
+        <div className="max-w-6xl mx-auto mb-10 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.3), transparent)" }} />
 
-        {/* Category sections */}
-        {categories.map((cat) => (
-          <CategorySection key={cat.id} cat={cat} />
-        ))}
+        {/* ── Search + Filters + Content ── */}
+        <FilterableContent />
 
-        <NsfwSection />
-
-        {/* Footer */}
-        <footer className="max-w-5xl mx-auto mt-14 pt-6 border-t border-[#2a2a40] flex flex-wrap justify-between gap-3 text-[11px] text-[#7a7898]">
-          <span>© Prehľad AI Nástrojov — Máj 2026 | Príručka/Manuál</span>
+        {/* ── Footer ── */}
+        <footer className="max-w-6xl mx-auto mt-16 pt-6 flex flex-wrap justify-between gap-3 text-[11px] text-[#4a4868] font-['Inter']"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <span>© Prehľad AI Nástrojov — Máj 2026</span>
           <span>Zostavené na základe verejne dostupných benchmarkov a recenzií</span>
         </footer>
       </main>
