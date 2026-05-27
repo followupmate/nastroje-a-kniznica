@@ -19,8 +19,8 @@ export default function ToolCard({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.35, delay: index * 0.04, ease: [0.23, 1, 0.32, 1] }}
       whileHover={{ y: -3, transition: { duration: 0.2 } }}
-      className="group relative rounded-xl overflow-hidden cursor-pointer gradient-border glow-hover"
-      style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.07)" }}
+      className="group relative rounded-2xl overflow-hidden cursor-pointer gradient-border glow-hover"
+      style={{ background: "rgba(255,255,255,0.028)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.25)" }}
     >
       {/* Top accent glow line */}
       <div
@@ -34,9 +34,9 @@ export default function ToolCard({
         style={{ background: `radial-gradient(ellipse at 50% 0%, ${accentColor}08 0%, transparent 70%)` }}
       />
 
-      <div className="relative p-4">
+      <div className="relative p-5">
         {/* Header row */}
-        <div className="flex items-start justify-between gap-2 mb-2.5">
+        <div className="flex items-start justify-between gap-2 mb-3">
           <div className="flex-1 min-w-0">
             <div className="font-['Space_Grotesk'] text-[13px] font-semibold text-white leading-snug">
               {tool.url ? (
@@ -65,7 +65,7 @@ export default function ToolCard({
         </div>
 
         {/* Description */}
-        <p className="text-[11.5px] text-[#7a7898] leading-relaxed mb-3 font-['Inter']">
+        <p className="text-[12px] text-[#7a7898] leading-relaxed mb-3.5 font-['Inter']">
           {tool.desc}
         </p>
 
