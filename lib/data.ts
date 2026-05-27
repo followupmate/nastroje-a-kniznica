@@ -247,14 +247,6 @@ export const categories: Category[] = [
       },
     ],
   },
-  {
-    id: "nsfw",
-    icon: "🔞",
-    title: "NSFW & Erotický Obsah",
-    subtitle: "Len názvy nástrojov · Pre dospelých (18+)",
-    color: "#ff6c6c",
-    subsections: [],
-  },
 ];
 
 export const nsfwData = {

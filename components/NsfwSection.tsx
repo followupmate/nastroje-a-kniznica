@@ -19,10 +19,18 @@ export default function NsfwSection() {
       </div>
 
       {/* Warning */}
-      <div className="bg-red-500/8 border border-red-500/25 rounded-lg p-4 mb-5 flex gap-3">
-        <span className="text-lg shrink-0">⚠️</span>
-        <p className="text-[12px] text-red-300/90 leading-relaxed">
-          <strong>Poznámka pre príručku:</strong> {nsfwData.warning}
+      <div className="bg-red-500/10 border border-red-500/40 rounded-lg p-4 mb-5">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-base">🔞</span>
+          <strong className="text-[12px] text-red-400 tracking-wide uppercase font-bold">
+            Nasledujúca sekcia obsahuje len názvy nástrojov pre dospelých (18+)
+          </strong>
+        </div>
+        <p className="text-[12px] text-red-300/80 leading-relaxed mb-1.5">
+          Niektoré z uvedených nástrojov môžu byť v niektorých krajinách nelegálne. Za ich použitie nesiete výhradnú zodpovednosť vy.
+        </p>
+        <p className="text-[12px] text-[#7a7898] leading-relaxed">
+          {nsfwData.warning}
         </p>
       </div>
 
