@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { kniznicaCollections, allKniznicaItems, type KniznicaItem } from "@/lib/kniznica-data";
 import Link from "next/link";
 
@@ -26,11 +26,22 @@ const TYPE_TEXT_COLORS: Record<string, string> = {
 };
 
 function ItemCard({ item }: { item: KniznicaItem }) {
+  const [expanded, setExpanded] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    if (!item.fullPrompt) return;
+    navigator.clipboard.writeText(item.fullPrompt).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-xl p-4 flex flex-col gap-2 transition-colors duration-150 hover:bg-white/[0.03] cursor-default"
+      className="rounded-xl p-4 flex flex-col gap-2"
       style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)" }}
     >
       <div className="flex items-start justify-between gap-2">
@@ -48,20 +59,38 @@ function ItemCard({ item }: { item: KniznicaItem }) {
             {item.title}
           </h3>
         </div>
-        {item.url && (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-colors duration-150 hover:bg-white/10"
-            style={{ border: "1px solid rgba(255,255,255,0.1)" }}
-            title="Otvoriť odkaz"
-          >
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#6b6890" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V9M10 2h4m0 0v4m0-4L7 9" />
-            </svg>
-          </a>
-        )}
+        <div className="flex items-center gap-1 shrink-0">
+          {item.url && (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors duration-150 hover:bg-white/10"
+              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+              title="Otvoriť odkaz"
+            >
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#6b6890" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 3H3a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V9M10 2h4m0 0v4m0-4L7 9" />
+              </svg>
+            </a>
+          )}
+          {item.fullPrompt && (
+            <button
+              onClick={() => setExpanded((e) => !e)}
+              className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors duration-150 hover:bg-white/10 cursor-pointer"
+              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+              title={expanded ? "Skryť prompt" : "Zobraziť prompt"}
+            >
+              <motion.svg
+                animate={{ rotate: expanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+                width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#6b6890" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+              >
+                <path d="M4 6l4 4 4-4" />
+              </motion.svg>
+            </button>
+          )}
+        </div>
       </div>
 
       <p className="text-[12px] text-[#8885a8] leading-relaxed">{item.description}</p>
@@ -79,6 +108,44 @@ function ItemCard({ item }: { item: KniznicaItem }) {
           ))}
         </div>
       )}
+
+      <AnimatePresence>
+        {expanded && item.fullPrompt && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <div className="mt-2 rounded-lg overflow-hidden" style={{ border: "1px solid rgba(6,182,212,0.2)" }}>
+              <div className="flex items-center justify-between px-3 py-2" style={{ background: "rgba(6,182,212,0.06)", borderBottom: "1px solid rgba(6,182,212,0.15)" }}>
+                <span className="text-[10px] font-bold tracking-wider uppercase text-[#22d3ee] font-['Space_Grotesk']">Full Prompt</span>
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 text-[10px] px-2 py-1 rounded-md transition-all duration-150 cursor-pointer font-['Space_Grotesk']"
+                  style={copied
+                    ? { background: "rgba(16,185,129,0.15)", color: "#34d399", border: "1px solid rgba(16,185,129,0.3)" }
+                    : { background: "rgba(255,255,255,0.05)", color: "#6b6890", border: "1px solid rgba(255,255,255,0.1)" }
+                  }
+                >
+                  {copied ? (
+                    <><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 8l4 4 8-8" /></svg>Skopírované</>
+                  ) : (
+                    <><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="5" width="9" height="9" rx="1" /><path d="M3 11V3a1 1 0 011-1h8" /></svg>Kopírovať</>
+                  )}
+                </button>
+              </div>
+              <pre
+                className="p-3 text-[11px] text-[#8885a8] leading-relaxed overflow-x-auto whitespace-pre-wrap font-mono"
+                style={{ background: "rgba(0,0,0,0.3)", maxHeight: "320px", overflowY: "auto" }}
+              >
+                {item.fullPrompt}
+              </pre>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

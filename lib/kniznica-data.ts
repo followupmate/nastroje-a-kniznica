@@ -8,6 +8,7 @@ export interface KniznicaItem {
   url?: string;
   tags: string[];
   type: KniznicaItemType;
+  fullPrompt?: string;
   dateAdded: string;
   collection?: string;
 }
@@ -492,6 +493,192 @@ export const kniznicaCollections: KniznicaCollection[] = [
         type: "skill",
         dateAdded: "2026-06-04",
         collection: "claude-skills-prompts-1",
+      },
+    ],
+  },
+  {
+    id: "realism-formula",
+    title: "Realism Formula — Skin Texture System",
+    description: "Kompletný systém na tvorbu fotorealistickej kože pomocou AI. Model Nano Banana 2 (invideo.io) + Magnific AI upscale + Kling 2.6 animácia. Zdroj: Realism Formula PDF, jún 2026.",
+    icon: "🎞️",
+    color: "#22c55e",
+    dateAdded: "2026-06-04",
+    items: [
+      {
+        id: "realism-workflow-info",
+        title: "Realism Formula — Workflow",
+        category: "AI Image / Workflow",
+        description: "Kompletný workflow: invideo.io → Nano Banana 2 → Magnific AI (2x upscale) → Kling 2.6 (animácia). Krok 1: invideo.io → Agents and models → New project → Nano Banana 2. Krok 7: TakeOne Pro → Kling 2.6 na animáciu finálnych shotov.",
+        tags: ["workflow", "invideo.io", "Nano Banana 2", "Magnific AI", "Kling 2.6", "animácia"],
+        type: "info",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+      },
+      {
+        id: "realism-master-prompt",
+        title: "Master Prompt — Skin Realism Template",
+        category: "AI Image / Prompt",
+        description: "Univerzálny master prompt pre fotorealistickú kožu. Parametrizovaný šablónovým systémom — stačí zmeniť BODY_PART, SKIN_TONE a IMPERFECTION. Upscale: Magnific AI Low 2x, creativity −3, resemblance 3.",
+        tags: ["master prompt", "skin texture", "macro", "medium format", "Magnific AI", "šablóna"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `MASTER PROMPT — Skin Realism (parametrizovaná šablóna)
+
+Model: nano-banana-2 | Rozlíšenie: 4K
+
+PARAMETRE (zmeň podľa potreby):
+  body_part: ear / cheek / forehead / knuckles / neck / collarbone
+  skin_tone: deep brown-black / warm medium brown / olive-tan / light beige-pink / pale with pink undertones
+  imperfections: raised mole 4mm / healed scar 15mm / freckle cluster / keloid / acne scarring / none
+
+PROMPT:
+"Extreme macro photograph of [BODY_PART]. [SKIN_TONE] skin. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. [IMPERFECTION] rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI):
+  preset: Low | scale: 2x | creativity: −3 | HDR: 0 | resemblance: 3 | fractality: 0
+  upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-ears-prompt",
+        title: "Skin Prompt — Ears (diamond stud, warm brown)",
+        category: "AI Image / Prompt",
+        description: "Extrémne makro ucha s diamantovým náušníkom v platine. Teplá stredohnedá koža, buzz cut, goatee. Model: Nano Banana 2 / 4K.",
+        tags: ["ucho", "makro", "diamond stud", "warm medium brown", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: warm medium brown
+Body part: right ear with round diamond stud earring
+Imperfections: round brilliant-cut diamond stud in platinum setting on earlobe, goatee stubble on jawline below ear, buzz cut stubble at hairline above ear, visible ear cartilage folds
+
+PROMPT:
+"Extreme macro photograph of right ear with round diamond stud earring. Warm medium brown skin. Full ear in profile filling frame — helix, antihelix, tragus, concha, and earlobe all visible, round brilliant-cut diamond stud earring in platinum four-prong setting on earlobe catching light, buzz cut stubble visible at hairline above ear, goatee stubble on jawline below and in front of ear, sage-green blurred background. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Round brilliant-cut diamond stud in platinum setting on earlobe rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-forehead-prompt",
+        title: "Skin Prompt — Forehead (wrinkles, warm brown)",
+        category: "AI Image / Prompt",
+        description: "Čelo s hlbokými horizontálnymi vráskami, buzz cut pri línii vlasov. Teplá stredohnedá koža. Model: Nano Banana 2 / 4K.",
+        tags: ["čelo", "vrásky", "makro", "warm medium brown", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: warm medium brown
+Body part: forehead from hairline to eyebrows
+Imperfections: deep horizontal forehead wrinkles 3-4 lines, buzz cut stubble at receding hairline, visible pores across entire forehead, eyebrow tops visible at bottom edge
+
+PROMPT:
+"Extreme macro photograph of forehead from hairline to eyebrows. Warm medium brown skin. Full forehead filling frame with 3-4 deep horizontal wrinkle lines, short buzz cut stubble visible at top hairline edge, thick black eyebrow tops visible at bottom of frame, dense visible pores across entire surface. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Deep horizontal forehead wrinkles 3-4 lines rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-lips-prompt",
+        title: "Skin Prompt — Lips (pale beige, vertical lines)",
+        category: "AI Image / Prompt",
+        description: "Pery a brada. Bledá béžová koža s ružovým podtónom, vertikálne línie pier, vellus chĺpky, sage-green farebný nádych. Model: Nano Banana 2 / 4K.",
+        tags: ["pery", "brada", "makro", "pale beige", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: pale beige with pink undertones
+Body part: lips and chin area
+Imperfections: vertical lip lines on both lips, subtle chin cleft shadow, fine vellus hair on chin and upper lip area, natural lip color gradient pink to beige
+
+PROMPT:
+"Extreme macro photograph of lips and chin area. Pale beige with pink undertones skin. Closed lips filling upper portion of frame with visible vertical lip texture lines, pink-beige natural lip color, chin below with subtle cleft shadow, fine vellus peach fuzz visible on chin and around mouth, muted sage-green color cast over entire image. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Vertical lip lines on both lips rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-neck-tattoo-prompt",
+        title: "Skin Prompt — Neck Tattoo (deep brown-black)",
+        category: "AI Image / Prompt",
+        description: "Krk s tetovaním, tmavohnedočierna koža. Adamovo jablko, límec košele, viditeľné póry a stubble. Model: Nano Banana 2 / 4K.",
+        tags: ["krk", "tetovanie", "makro", "deep brown-black", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: deep brown-black
+Body part: neck and throat with tattoo
+Imperfections: black ink tattoo reading PUKE in capital letters across lower neck, visible Adam's apple contour above, tan button-up shirt collar at bottom, fine neck stubble
+
+PROMPT:
+"Extreme macro photograph of neck and throat with tattoo. Deep brown-black skin. Front of neck filling frame, black ink tattoo reading PUKE in capital serif letters across lower throat, Adam's apple visible at top, tan/beige button-up shirt collar with metal button visible at bottom edge, chin shadow at top of frame, visible pores and fine stubble across neck surface. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Black ink tattoo rendering with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-eye-prompt",
+        title: "Skin Prompt — Eye (deep brown-black, olive cast)",
+        category: "AI Image / Prompt",
+        description: "Extrémne makro jedného oka. Tmavohnedočierna koža s olive-green farebným nádychom, tmavá hnedá dúhovka, prirodzené mihalnice. Model: Nano Banana 2 / 4K.",
+        tags: ["oko", "makro", "deep brown-black", "olive", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: deep brown-black with olive-green color cast
+Body part: single eye extreme close-up
+Imperfections: fine under-eye texture, natural eyelid crease, sparse short eyelashes
+
+PROMPT:
+"Extreme macro photograph of single eye extreme close-up. Deep brown-black with olive-green color cast skin. Single eye filling frame, dark brown iris with visible radial fibers and light reflection, white sclera with subtle cream tone, short natural eyelashes, smooth eyelid with fine crease, surrounding orbital skin with visible pore texture. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Fine under-eye texture rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
+      },
+      {
+        id: "realism-bandaid-prompt",
+        title: "Skin Prompt — Bandaid (pinky finger, deep brown-black)",
+        category: "AI Image / Prompt",
+        description: "Malíček s látkovým náplasťom, tmavohnedočierna koža, modrofialový rukáv. Model: Nano Banana 2 / 4K.",
+        tags: ["prst", "náplasť", "makro", "deep brown-black", "Nano Banana 2"],
+        type: "prompt",
+        dateAdded: "2026-06-04",
+        collection: "realism-formula",
+        fullPrompt: `Model: nano-banana-2 | Rozlíšenie: 4K
+Skin tone: deep brown-black
+Body part: pinky finger wrapped in fabric bandaid
+Imperfections: woven fabric bandaid wrapped around finger, visible fingernail edge, knuckle crease at base
+
+PROMPT:
+"Extreme macro photograph of pinky finger wrapped in fabric bandaid. Deep brown-black skin. Small pinky finger with woven beige/tan fabric bandaid wrapped around the middle section, white gauze pad visible in center of bandaid, finger emerging from powder-blue fabric sleeve. Photorealistic, shot on medium format film. Raking side-top light at 45 degrees reveals every pore as a 3D crater with its own micro-shadow. Shallow depth of field — critical sharpness in the center, gentle optical falloff at edges. Visible: individual pore openings with depth, vellus peach fuzz catching sidelight, natural sebum sheen (uneven, concentrated on convex surfaces), subsurface color variation (veins, capillary flush, melanin gradients), micro-wrinkles between major features. Woven fabric bandaid wrapped around finger rendered with full physical accuracy — casting micro-shadow, distinct texture from surrounding skin. Skin fills 85% of frame. Fine organic film grain throughout. Zero digital sharpening — all sharpness is optical. Lifted blacks — shadow detail preserved inside every pore. Soft highlight rolloff — specular sheen never clips. No makeup, no retouching, no smoothing, no filters. The skin must look uncomfortably real — a dermatological study shot by a cinematographer."
+
+NEGATIVE PROMPT:
+"airbrushed, smooth skin, uniform tone, beauty lighting, ring light, porcelain, digital sharpening halos, symmetrical pore patterns, CGI, plastic, silicone, flat lighting, text, logos, watermarks"
+
+UPSCALE (Magnific AI): Low / 2x / creativity −3 / resemblance 3
+upscale_prompt: "Add micro pores, micro hairs and sharp skin texture."`,
       },
     ],
   },
