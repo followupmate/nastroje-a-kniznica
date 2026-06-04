@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
 import { categories } from "@/lib/data";
 
 const NAV_ICONS: Record<string, string> = {
@@ -78,6 +79,15 @@ export default function Navbar() {
 
           {/* Desktop category links */}
           <div className="hidden sm:flex items-center gap-0.5 flex-1 overflow-x-auto scrollbar-none">
+            <Link
+              href="/kniznica"
+              className="relative shrink-0 flex items-center gap-1.5 text-[11px] px-2.5 py-1.5 rounded-lg transition-colors duration-150 whitespace-nowrap cursor-pointer text-[#e07b39] hover:opacity-80"
+              style={{ background: "rgba(224,123,57,0.1)", border: "1px solid rgba(224,123,57,0.22)" }}
+            >
+              <span>⚡</span>
+              <span className="font-['Space_Grotesk'] font-semibold">Knižnica</span>
+            </Link>
+            <div className="w-px h-4 bg-white/10 shrink-0 mx-1" />
             {allItems.map((cat) => (
               <a
                 key={cat.id}
@@ -147,6 +157,20 @@ export default function Navbar() {
             }}
           >
             <div className="px-3 py-3 grid grid-cols-2 gap-1">
+              <Link
+                href="/kniznica"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl cursor-pointer transition-colors duration-150"
+                style={{ background: "rgba(224,123,57,0.1)", border: "1px solid rgba(224,123,57,0.25)" }}
+              >
+                <span className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-sm"
+                  style={{ background: "rgba(224,123,57,0.18)", border: "1px solid rgba(224,123,57,0.3)" }}>
+                  ⚡
+                </span>
+                <span className="font-['Space_Grotesk'] font-semibold text-[12px] truncate" style={{ color: "#e07b39" }}>
+                  Knižnica
+                </span>
+              </Link>
               {allItems.map((cat) => (
                 <a
                   key={cat.id}
