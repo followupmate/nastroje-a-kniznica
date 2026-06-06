@@ -255,6 +255,240 @@ export const categories: Category[] = [
     color: "#ff6c6c",
     subsections: [],
   },
+  {
+    id: "writing",
+    icon: "✍️",
+    title: "Písanie & Copywriting",
+    subtitle: "AI copywriting · Obsah · Blog · Email · Marketing copy",
+    color: "#f472b6",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Jasper", url: "https://jasper.ai", badges: ["TOP","PAID"], desc: "Lídra AI copywritingu pre marketingové tímy. Blog posty, reklamy, emaily a sociálne siete na jedno kliknutie.", tags: ["copywriting","marketing","blog"] },
+          { name: "Copy.ai", url: "https://copy.ai", badges: ["FREE","API"], desc: "AI marketingový copywriter. Generuje reklamné texty, produktové popisy a kampane. Výborný bezplatný tier.", tags: ["marketing","reklamy","produkty"] },
+          { name: "Rytr", url: "https://rytr.me", badges: ["FREE"], desc: "Lacný AI asistent pre tvorbu obsahu. Podporuje 40+ prípadov použitia a 30+ jazykov.", tags: ["obsah","jazyky","lacný"] },
+          { name: "Wordtune", url: "https://wordtune.com", badges: ["FREE"], desc: "Prepíše vety prirodzenejšie a presvedčivejšie. Ideálny pre prepis a skracovanie textu.", tags: ["prepis","štýl","skracovanie"] },
+          { name: "Anyword", url: "https://anyword.com", badges: ["PAID"], desc: "AI copywriting s prediktívnym skóre výkonu textu. Optimalizovaný pre konverzný marketing.", tags: ["CRO","predikcia","reklamy"] },
+          { name: "QuillBot", url: "https://quillbot.com", badges: ["FREE"], desc: "Parafrázovacie a sumarizačné AI. Najpoužívanejší bezplatný nástroj na prepis textu.", tags: ["parafrázovanie","sumarizácia","škola"] },
+          { name: "Writesonic", url: "https://writesonic.com", badges: ["FREE","API"], desc: "Kompletný AI writing suite — blog, reklamy, landing pages, chatbot ChatSonic.", tags: ["blog","landing page","chatbot"] },
+          { name: "Hypotenuse AI", url: "https://hypotenuse.ai", badges: ["PAID"], desc: "Konvertuje kľúčové slová na dlhé SEO články a produktové popisy. E-commerce zameranný.", tags: ["SEO","e-commerce","produkty"] },
+          { name: "Lex", url: "https://lex.page", badges: ["FREE"], desc: "Word procesor s integrovanou AI asistenciou. Ako Google Docs s AI autocomplete a brainstormingom.", tags: ["editor","písanie","brainstorming"] },
+          { name: "Lavender", url: "https://lavender.ai", badges: ["PAID"], desc: "AI email asistent špeciálne pre predajné e-maily. Reálne zlepšuje mieru odpovedí.", tags: ["email","predaj","outreach"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "search",
+    icon: "🔍",
+    title: "AI Vyhľadávanie",
+    subtitle: "AI search engines · RAG · Sémantické vyhľadávanie · Prieskum",
+    color: "#06b6d4",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Perplexity AI", url: "https://perplexity.ai", badges: ["TOP","FREE","API"], desc: "Najlepší AI vyhľadávač 2026. Odpovede s citovanými zdrojmi v reálnom čase. Pro verzia s pokročilými modelmi.", tags: ["search","citácie","real-time"] },
+          { name: "Exa", url: "https://exa.ai", badges: ["FREE","API"], desc: "Sémantické vyhľadávanie cez neurálnu sieť. Ideálny pre vývojárov a RAG pipeline.", tags: ["API","sémantické","RAG"] },
+          { name: "Phind", url: "https://phind.com", badges: ["FREE"], desc: "AI vyhľadávač špeciálne pre vývojárov. Kódové výsledky s vysvetleniami a kontextom.", tags: ["kód","vývojári","debugging"] },
+          { name: "You.com", url: "https://you.com", badges: ["FREE"], desc: "Súkromný AI vyhľadávač. Blokuje sledovanie, AI chat a generovanie obrázkov v jednom.", tags: ["súkromie","chat","obrázky"] },
+          { name: "Komo", url: "https://komo.ai", badges: ["FREE"], desc: "Rýchly AI vyhľadávač bez reklám. Zameraný na rýchlosť a súkromie.", tags: ["rýchlosť","súkromie","bez reklám"] },
+          { name: "PrivateGPT", url: "https://github.com/zylon-ai/private-gpt", badges: ["OS","FREE"], desc: "Opýtaj sa svojich dokumentov bez internetu. 100% lokálne, open-source, bezpečné.", tags: ["lokálne","dokumenty","súkromie"] },
+          { name: "Quivr", url: "https://github.com/QuivrHQ/quivr", badges: ["OS","FREE"], desc: "Chat s vlastnými súbormi cez generatívnu AI a embeddingy. Druhý mozog na lokálnych dokumentoch.", tags: ["dokumenty","embeddingy","lokálne"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "productivity",
+    icon: "⚡",
+    title: "Produktivita",
+    subtitle: "AI workspace · Poznámky · Automatizácia · Stretnutia · Pamäť",
+    color: "#8b5cf6",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Notion AI", url: "https://notion.so/product/ai", badges: ["TOP","PAID"], desc: "AI priamo v Notion workspace. Zhrnutia, dopĺňanie, preklad, generovanie databáz a dokumentov.", tags: ["workspace","poznámky","dokumenty"] },
+          { name: "NotebookLM", url: "https://notebooklm.google", badges: ["TOP","FREE"], desc: "Google AI výskumný asistent. Nahraj PDF/dokumenty a chatuj s nimi. Generuje podcasty z obsahu.", tags: ["dokumenty","výskum","podcast"] },
+          { name: "Mem", url: "https://mem.ai", badges: ["PAID"], desc: "AI-powered osobný workspace s automatickým organizovaním poznámok podľa kontextu.", tags: ["poznámky","organizácia","kontext"] },
+          { name: "Taskade", url: "https://taskade.com", badges: ["FREE","API"], desc: "AI-powered task manager s mind mapami, outlinmi a tímovou spoluprácou.", tags: ["úlohy","mind mapa","tím"] },
+          { name: "Limitless", url: "https://limitless.ai", badges: ["PAID"], desc: "AI pamäťový asistent. Nahrávanie stretnutí, konverzácií a automatické zhrnutia.", tags: ["pamäť","stretnutia","nahrávanie"] },
+          { name: "Screenpipe", url: "https://github.com/screenpipe/screenpipe", badges: ["OS","FREE"], desc: "Nahrávanie obrazovky s AI vyhľadávaním a automatizáciou. Open-source alternatíva k Rewind.", tags: ["obrazovka","vyhľadávanie","automatizácia"] },
+          { name: "ChatPDF", url: "https://chatpdf.com", badges: ["FREE"], desc: "Nahraj PDF a chatuj s ním. Najjednoduchší spôsob ako extrahovať info z dokumentov.", tags: ["PDF","chat","dokumenty"] },
+          { name: "Nekton AI", url: "https://nekton.ai", badges: ["FREE"], desc: "Automatizácia workflow prirodzeným jazykom. Popíš čo chceš a AI vytvorí automatizáciu.", tags: ["automatizácia","workflow","no-code"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "meetings",
+    icon: "🎙️",
+    title: "Meeting Asistenti",
+    subtitle: "Transkripcia stretnutí · Zhrnutia · Action items · Analýza hovorov",
+    color: "#10b981",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Otter.ai", url: "https://otter.ai", badges: ["TOP","FREE"], desc: "Najpoužívanejší transcription tool. Reálne prepisy, zhrnutia a action items zo stretnutí. Integrácia so Zoom, Meet, Teams.", tags: ["transkripcia","Zoom","action items"] },
+          { name: "Fireflies.ai", url: "https://fireflies.ai", badges: ["FREE","API"], desc: "AI notetaker pre tímy. Transkripcia, analýza sentimentu, vyhľadávanie v stretnutiach, integrácia s CRM.", tags: ["tím","CRM","analýza"] },
+          { name: "Read AI", url: "https://read.ai", badges: ["PAID"], desc: "Meeting copilot so zhrnutiami a odporúčaniami. Meria engagement a efektivitu stretnutí.", tags: ["engagement","efektivita","zhrnutia"] },
+          { name: "Loopin AI", url: "https://loopinhq.com", badges: ["FREE"], desc: "Kolaboratívny meeting workspace s transkripciou a zdieľanými poznámkami v reálnom čase.", tags: ["kolaborácia","real-time","poznámky"] },
+          { name: "Sybill", url: "https://sybill.ai", badges: ["PAID"], desc: "AI pre predajné hovory. Analýza sentimentu, zhrnutia, body language insights pre sales tímy.", tags: ["predaj","sales","sentiment"] },
+          { name: "Cogram", url: "https://cogram.com", badges: ["PAID"], desc: "Automatické meeting notes a action items. Funguje cez Zoom, Teams a Google Meet.", tags: ["notes","action items","automatické"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "research",
+    icon: "🔬",
+    title: "Akademický Výskum",
+    subtitle: "AI výskum · Vedecké články · Literatúra · Citácie · Analýza",
+    color: "#f59e0b",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Elicit", url: "https://elicit.org", badges: ["TOP","FREE"], desc: "Automatizácia výskumných workflow. AI extrahuje kľúčové zistenia z tisícov vedeckých článkov.", tags: ["vedecké články","extrakcia","systematický review"] },
+          { name: "Consensus", url: "https://consensus.app", badges: ["FREE"], desc: "Vyhľadávač s odpoveďami priamo z vedeckých štúdií. Zobrazuje mieru vedeckého konsenzu.", tags: ["veda","konsenzus","citácie"] },
+          { name: "SciSpace", url: "https://scispace.com", badges: ["FREE"], desc: "AI výskumný asistent pre vedeckú literatúru. Vysvetlí komplikované papery jednoducho.", tags: ["papery","vysvetlenie","literatúra"] },
+          { name: "scite", url: "https://scite.ai", badges: ["PAID"], desc: "Platforma na objavovanie vedeckých článkov. Ukáže ako boli citácie použité — podporujúco alebo kriticky.", tags: ["citácie","kritika","podpora"] },
+          { name: "Explainpaper", url: "https://explainpaper.com", badges: ["FREE"], desc: "Nahraj paper, označ čo nerozumieš a AI to vysvetlí. Ideálny pre náročné akademické texty.", tags: ["vysvetlenie","zrozumiteľnosť","akademik"] },
+          { name: "Rayyan", url: "https://rayyan.ai", badges: ["FREE"], desc: "AI platforma pre systematické literárne review. Používaná výskumníkmi po celom svete.", tags: ["systematic review","medicína","výskum"] },
+          { name: "STORM", url: "https://storm.genie.stanford.edu", badges: ["FREE"], desc: "Stanford LLM nástroj na hlboký výskum a generovanie reportov. Ako Wikipedia research assistant.", tags: ["Stanford","reporty","hlboký výskum"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "local-llm",
+    icon: "🖥️",
+    title: "Lokálne LLM",
+    subtitle: "Offline AI · Lokálne modely · Súkromné nasadenie · Self-hosted",
+    color: "#64748b",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Ollama", url: "https://ollama.com", badges: ["TOP","OS","FREE"], desc: "Najjednoduchší spôsob spustenia LLM lokálne. Jeden príkaz a máš Llama, Mistral, Qwen offline.", tags: ["lokálne","offline","CLI"] },
+          { name: "LM Studio", url: "https://lmstudio.ai", badges: ["OS","FREE"], desc: "Desktop app na stiahnutie a spustenie lokálnych LLM. GUI pre Ollama alternatíva s chat rozhraním.", tags: ["desktop","GUI","GGUF"] },
+          { name: "Open WebUI", url: "https://github.com/open-webui/open-webui", badges: ["OS","FREE"], desc: "Self-hosted ChatGPT-like interface pre Ollama. Plnohodnotný chat UI s históriou a modelmi.", tags: ["self-hosted","Ollama","chat UI"] },
+          { name: "Jan", url: "https://jan.ai", badges: ["OS","FREE"], desc: "Offline desktop AI asistent. Runs Llama, Mistral, Phi lokálne. Vlastný API server.", tags: ["offline","desktop","API server"] },
+          { name: "LLM (datasette)", url: "https://llm.datasette.io", badges: ["OS","FREE"], desc: "CLI utility na spúšťanie language modelov. Podpora lokálnych aj cloudových modelov cez plugin systém.", tags: ["CLI","plugin","Python"] },
+          { name: "privateGPT", url: "https://github.com/zylon-ai/private-gpt", badges: ["OS","FREE"], desc: "Chatuj so svojimi dokumentmi 100% offline. Žiadne data neopustí tvoj počítač.", tags: ["dokumenty","offline","súkromie"] },
+          { name: "Harbor", url: "https://github.com/av/harbor", badges: ["OS","FREE"], desc: "Kontajnerizovaný LLM toolkit. Docker-based spúšťanie celého AI stacku lokálne.", tags: ["Docker","kontajner","stack"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "agents",
+    icon: "🤖",
+    title: "Autonómne Agenty",
+    subtitle: "AI agenty · Multi-agent systémy · Automatizácia · Agentic AI",
+    color: "#ef4444",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "n8n", url: "https://n8n.io", badges: ["TOP","FREE","OS","API"], desc: "Workflow automatizácia s AI capabilities. Open-source Zapier alternatíva s MCP a AI node integráciou.", tags: ["workflow","automatizácia","no-code"] },
+          { name: "AutoGen", url: "https://github.com/microsoft/autogen", badges: ["TOP","OS","FREE"], desc: "Microsoft multi-agent konverzačný framework. Agenty sa navzájom rozprávajú a riešia problémy.", tags: ["Microsoft","multi-agent","Python"] },
+          { name: "MetaGPT", url: "https://github.com/FoundationAgents/MetaGPT", badges: ["OS","FREE"], desc: "Multi-agent framework — každý agent má rolu (PM, Dev, QA). Generuje celé softvérové projekty.", tags: ["multi-agent","softvér","role"] },
+          { name: "OpenHands", url: "https://github.com/OpenHands/OpenHands", badges: ["OS","FREE"], desc: "Autonómny softwarový inžinier. Píše kód, spúšťa testy, fixuje bugy sám v sandboxe.", tags: ["kód","autonómny","sandbox"] },
+          { name: "Devin", url: "https://devin.ai", badges: ["PAID"], desc: "Prvý autonómny AI softwarový inžinier. Plánuje, kóduje, testuje a deployuje projekty.", tags: ["inžinier","autonómny","deploy"] },
+          { name: "Mastra", url: "https://mastra.ai", badges: ["OS","FREE","API"], desc: "TypeScript framework pre AI agentov. Workflows, memory, tool calling, RAG v jednom.", tags: ["TypeScript","framework","RAG"] },
+          { name: "PraisonAI", url: "https://github.com/MervinPraison/PraisonAI", badges: ["OS","FREE"], desc: "Multi-agent framework s jednoduchým YAML config. Wrapper nad AutoGen a CrewAI.", tags: ["YAML","CrewAI","jednoduchý"] },
+          { name: "AgentGPT", url: "https://github.com/reworkd/AgentGPT", badges: ["OS","FREE"], desc: "Deploy autonómnych AI agentov v browseri. Definuj cieľ a sleduj ako ho agent plní.", tags: ["browser","deploy","cieľ"] },
+          { name: "GPT Engineer", url: "https://github.com/AntonOsika/gpt-engineer", badges: ["OS","FREE"], desc: "Popíš projekt a AI postaví celú codebase. Jeden z prvých open-source code agents.", tags: ["codebase","generovanie","open-source"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "dev-tools",
+    icon: "🛠️",
+    title: "Vývojárske Nástroje",
+    subtitle: "LLM frameworks · RAG · Monitoring · Fine-tuning · API platformy",
+    color: "#0ea5e9",
+    subsections: [
+      {
+        title: "Frameworky & Orchestrácia",
+        tools: [
+          { name: "LangChain", url: "https://langchain.com", badges: ["TOP","OS","FREE","API"], desc: "Najpoužívanejší framework pre LLM aplikácie. Chains, agents, RAG, memory — kompletný toolkit.", tags: ["framework","chains","RAG"] },
+          { name: "LlamaIndex", url: "https://llamaindex.ai", badges: ["OS","FREE","API"], desc: "Dátový framework pre LLM aplikácie. Najlepší pre RAG nad vlastnými dokumentmi.", tags: ["RAG","dokumenty","data framework"] },
+          { name: "Haystack", url: "https://haystack.deepset.ai", badges: ["OS","FREE","API"], desc: "Framework pre NLP pipelines a AI search. Deepset open-source nástroj pre produkčné systémy.", tags: ["NLP","search","pipeline"] },
+        ],
+      },
+      {
+        title: "API & Inference",
+        tools: [
+          { name: "OpenRouter", url: "https://openrouter.ai", badges: ["FREE","API"], desc: "Jednotné API pre 100+ LLM modelov. Jeden klúč pre GPT-4, Claude, Gemini, Llama a ďalšie.", tags: ["unified API","modely","routing"] },
+          { name: "Together AI", url: "https://together.ai", badges: ["FREE","API"], desc: "Rýchla inferencia a fine-tuning open-source modelov. Lacná alternatíva k OpenAI API.", tags: ["inferencia","fine-tuning","open-source"] },
+          { name: "Groq", url: "https://groq.com", badges: ["FREE","API"], desc: "Najrýchlejšia cloudová inferencia vďaka vlastnému LPU hardware. Llama a Mixtral v real-time.", tags: ["rýchlosť","LPU","real-time"] },
+        ],
+      },
+      {
+        title: "Monitoring & Observability",
+        tools: [
+          { name: "Langfuse", url: "https://langfuse.com", badges: ["OS","FREE","API"], desc: "Open-source LLM engineering platforma. Tracing, evaluation, prompt management pre produkciu.", tags: ["tracing","monitoring","prompty"] },
+          { name: "Portkey", url: "https://portkey.ai", badges: ["FREE","API"], desc: "LLMOps platforma s AI gateway. Monitoring, fallbacky, caching a load balancing pre LLM.", tags: ["gateway","caching","fallback"] },
+          { name: "Helicone", url: "https://helicone.ai", badges: ["FREE","API"], desc: "Observability a monitoring pre LLM. Jedno riadok kódu a máš logging pre OpenAI/Anthropic.", tags: ["logging","observability","OpenAI"] },
+        ],
+      },
+      {
+        title: "Nástroje pre Kódovanie",
+        tools: [
+          { name: "Gitingest", url: "https://gitingest.com", badges: ["FREE"], desc: "Konvertuje celý GitHub repozitár do jedného textového súboru pre LLM kontext. Alternatíva k Repomix.", tags: ["GitHub","kontext","LLM"] },
+          { name: "Repomix", url: "https://repomix.com", badges: ["OS","FREE"], desc: "Balí celú codebase do AI-friendly formátu. Ideálny na vloženie projektu do Claude/GPT.", tags: ["codebase","kontext","AI-friendly"] },
+          { name: "Vanna.ai", url: "https://vanna.ai", badges: ["OS","FREE","API"], desc: "Open-source RAG framework pre SQL. Chatuj so svojou databázou prirodzeným jazykom.", tags: ["SQL","databáza","RAG"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "leaderboards",
+    icon: "🏆",
+    title: "Rebríčky & Benchmarky",
+    subtitle: "LLM benchmarky · Model porovnania · Performance rebríčky · Testy",
+    color: "#d97706",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "Artificial Analysis", url: "https://artificialanalysis.ai", badges: ["FREE"], desc: "Najkomplexnejší AI benchmark portál. Porovnáva LLM, image, video modely podľa výkonu, rýchlosti a ceny.", tags: ["benchmark","porovnanie","cena/výkon"] },
+          { name: "Arena (LMSYS)", url: "https://arena.ai", badges: ["FREE"], desc: "Crowdsourced AI benchmark — Chatbot Arena. Ľudia hodnotia modely slepými súbojmi. Najpresnejší rebríček.", tags: ["chatbot arena","blind test","crowdsource"] },
+          { name: "LLM Stats", url: "https://llm-stats.com", badges: ["FREE"], desc: "Porovnanie modelov naprieč benchmarkmi a cenami. Rýchly prehľad cost-per-token pre všetky modely.", tags: ["cena","token","porovnanie"] },
+          { name: "OpenRouter Rankings", url: "https://openrouter.ai/rankings", badges: ["FREE"], desc: "Rebríček modelov podľa reálneho použitia na OpenRouter platforme. Najpopulárnejšie LLM live.", tags: ["popularita","usage","live"] },
+          { name: "imgsys", url: "https://imgsys.org/rankings", badges: ["FREE"], desc: "Ranking arena pre generatívne image modely. Slepé porovnania — ľudia vyberajú lepší obrázok.", tags: ["obrázky","image models","arena"] },
+          { name: "SEAL LLM Leaderboard", url: "https://labs.scale.com/leaderboard", badges: ["FREE"], desc: "Expert-driven LLM benchmarky od Scale AI. Zamerané na inštrukčné sledovanie a bezpečnosť.", tags: ["Scale AI","expert","inštrukcie"] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "prompts",
+    icon: "💬",
+    title: "Prompt Nástroje",
+    subtitle: "Prompt knižnice · Marketplace · Zdieľanie · Optimalizácia",
+    color: "#a855f7",
+    subsections: [
+      {
+        title: "Všetky nástroje",
+        tools: [
+          { name: "PromptHero", url: "https://prompthero.com", badges: ["FREE"], desc: "Najväčšia knižnica promptov pre Midjourney, DALL-E, Stable Diffusion a ChatGPT. Komunita zdieľa výsledky.", tags: ["Midjourney","DALL-E","komunita"] },
+          { name: "PromptBase", url: "https://promptbase.com", badges: ["FREE","PAID"], desc: "Marketplace na predaj a nákup AI promptov. Kvalitné prompty od komunity pre všetky modely.", tags: ["marketplace","predaj","kúpa"] },
+          { name: "FlowGPT", url: "https://flowgpt.com", badges: ["FREE"], desc: "Platforma na zdieľanie a objavovanie ChatGPT promptov. Kategorizované a hodnotené komunitou.", tags: ["ChatGPT","zdieľanie","hodnotenie"] },
+          { name: "PromptPerfect", url: "https://promptperfect.jina.ai", badges: ["FREE","API"], desc: "AI optimalizátor promptov. Automaticky vylepšuje tvoje prompty pre lepšie výsledky.", tags: ["optimalizácia","auto-improve","Jina"] },
+          { name: "OpenArt", url: "https://openart.ai", badges: ["FREE"], desc: "Vyhľadávanie promptov s ukážkami obrázkov. Objavuj čo funguje pre image generátory.", tags: ["image","vyhľadávanie","ukážky"] },
+          { name: "Lexica", url: "https://lexica.art", badges: ["FREE"], desc: "Stable Diffusion prompt vyhľadávač s galériou. Hľadaj podľa štýlu, výsledku alebo kľúčového slova.", tags: ["Stable Diffusion","galéria","štýl"] },
+          { name: "Learn Prompting", url: "https://learnprompting.org", badges: ["FREE"], desc: "Bezplatný kurz prompt engineeringu. Od základov po pokročilé techniky ako CoT, ReAct a RAG.", tags: ["kurz","vzdelávanie","prompt engineering"] },
+        ],
+      },
+    ],
+  },
 ];
 
 export const nsfwData = {
